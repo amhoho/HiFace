@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: hi_face
+spec:
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        name: hi_face
+    spec:
+      containers:
+      - name: hi_face
+        image: face_backend_env:v1
+        command: ["python", "main.py"]
+        volumeMounts:
+        - mountPath: /app
+          name: data-volume
+        ports:
+          - containerPort: 7006
+            hostPort: 7006
+      volumes:
+      - name: data-volume
+        hostPath: 
+          path: /home/developer/HiFace
+          type: Directory
+      hostNetwork: true

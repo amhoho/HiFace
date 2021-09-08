@@ -1,0 +1,28 @@
+[service]
+cbvsp_analyze_on = true                 # 是否开启了行人库的分析，倘若开启了，搜索的结果会多出“person_id”字段
+pedestrian_db_name = 'cbvsp'            # 行人库名称
+gpu_device = "0"                        # 指定gpu设备
+min_width = 50
+min_height = 50                         # 默认人脸检测尺寸
+detection_threshold = 0.95              # 默认人脸检测阈值
+default_login_db = 'face_login'         # 默认人脸登录库
+match_score = 0.87                      # 匹配阈值，大于该值认为同一人
+anti_score = 0.7                        # 活体检测真人阈值
+
+[flask]
+host = "0.0.0.0"
+port = 7006
+
+[faiss]
+nlist = 128                  # index训练时聚簇的数量
+nprobe = 128                 # 搜索时进行搜索的默认聚簇数量
+host = "127.0.0.1"
+port = 17100
+
+[mysql]
+host = '127.0.0.1'
+port = 3307
+user = "root"
+password = "root"
+database = "face_vec"
+main_pedestrian_table = 'pedestrian'

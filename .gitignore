@@ -1,0 +1,4 @@
+.idea/
+face_det_resnet50/resnet50.pth
+face_rec/face_rec.pth
+data/
